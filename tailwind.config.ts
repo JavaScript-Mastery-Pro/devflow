@@ -13,9 +13,6 @@ const config: Config = {
           100: "#FFF1E6",
           500: "#FF7000",
         },
-        secondary: {
-          DEFAULT: "#1DA1F2",
-        },
         dark: {
           100: "#000000",
           200: "#0F1117",
@@ -31,9 +28,6 @@ const config: Config = {
           500: "#7B8EC8",
           400: "#858EAD",
         },
-      },
-      spacing: {
-        "4.5": "18px",
       },
       borderRadius: {
         "1.5": "6px",
