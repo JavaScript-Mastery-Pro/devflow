@@ -1,15 +1,26 @@
-export default function Home() {
+import { redirect } from "next/navigation";
+
+import { auth, signOut } from "@/auth";
+import { Button } from "@/components/ui/button";
+
+async function Home() {
+  const session = await auth();
+  console.log(session);
+
   return (
-    <div>
-      <p className="text-3xl font-black text-light-500">
-        Welcome to Next.js 👋
-      </p>
-      <p className="font-inter text-3xl font-black text-light-500">
-        Welcome to Next.js (Inter) 👋
-      </p>
-      <p className="font-space-grotesk text-3xl font-black text-light-500">
-        Welcome to Next.js (Space Grotesk) 👋
-      </p>
+    <div className="px-10 pt-[100px]">
+      <form
+        action={async () => {
+          "use server";
+          await signOut();
+
+          redirect("/sign-in");
+        }}
+      >
+        <Button type="submit">logout</Button>
+      </form>
     </div>
   );
 }
+
+export default Home;
