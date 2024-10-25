@@ -29,7 +29,6 @@
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
 5. 🔗 [Assets](#links)
-6. 🚀 [More](#more)
 
 ## 🚨 Course
 
@@ -37,7 +36,10 @@ This repository contains the code corresponding to an in-depth course available 
 
 If you prefer visual learning, this is the perfect resource for you. Follow our course to learn how to build projects like these step-by-step in a beginner-friendly manner
 
-<a href="https://www.youtube.com/watch?v=FkowOdMjvYo" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
+<a href="https://www.jsmastery.pro/ultimate-next-course" target="_blank">
+  <img src="https://github.com/user-attachments/assets/54ef6cd0-1f00-4989-a6a5-3f77ca3f68a2" style="width: 150px; height: auto;" />
+</a>
+
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -61,19 +63,51 @@ If you're getting started and need assistance or encounter any bugs, you can joi
 
 ## <a name="features">🔋 Features</a>
 
-👉 **Point**: Short Description
+👉 **Authentication**: Secure sign-in with NextAuth, supporting Email/Password, Google, and GitHub.  
 
-👉 **Point**: Short Description
+👉 **Home Page**: Displays questions with filters, search, and pagination for easy navigation.  
 
-👉 **Point**: Short Description
+👉 **Recommendations**: Personalized suggestions on the home page.  
 
-👉 **Point**: Short Description
+👉 **Complex Layout**: Organized layout with popular questions and tags in view.  
 
-👉 **Point**: Short Description
+👉 **Question Details**: View questions with rich content, including images and code blocks.  
 
-👉 **Point**: Short Description
+👉 **Voting**: Upvote/downvote on questions to highlight helpful content.  
 
-👉 **Point**: Short Description
+👉 **View Counter**: Tracks the number of views for each question.  
+
+👉 **Bookmarking**: Save questions for quick access later.  
+
+👉 **Answer Posting**: MDX editor with light/dark modes for submitting answers.  
+
+👉 **AI Answer Generation**: Get AI-generated responses to questions.  
+
+👉 **Answer Filtering**: Sort answers by newest or most-voted, with pagination.  
+
+👉 **Answer Voting**: Upvote/downvote answers to rank quality responses.  
+
+👉 **Collections**: Organized saved questions with filters, search, and pagination.  
+
+👉 **Community**: Browse all users with search, filters, and pagination.  
+
+👉 **Profile**: View user info, badges, and engagement history with pagination.  
+
+👉 **Job Finder**: Discover jobs with filters and search, tailored to the user’s location.  
+
+👉 **Tags Page**: List of all tags with question counts, filters, and pagination.  
+
+👉 **Tag Details**: View questions by tag with search and pagination.  
+
+👉 **Ask a Question**: Simple interface for posting new questions.  
+
+👉 **Edit & Delete**: Update or remove questions and answers with validation and authorization.  
+
+👉 **Global Search**: Find content across questions, users, tags, and more.
+
+👉 **Responsive Design**: Fully optimized for a seamless experience on desktops, tablets, and mobile devices.  
+
+👉 **High Performance**: Fast loading and smooth interactions for an efficient user experience.
 
 and many more, including code architecture and reusability 
 
@@ -147,16 +181,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 
 ## <a name="links">🔗 Assets</a>
 
-Models and Assets used in the project can be found [here](https://drive.google.com/file/d/1TACDN8qFpi_NW66I4p48R9_MUmx-JT3P/edit)
+Assets used in the project can be found [here](https://drive.google.com/file/d/1nBru53dqIY4__A_WsburhpdiWUbdbncY/view?usp=sharing)
 
-## <a name="more">🚀 More</a>
-
-**JavaScript Mastery YouTube**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<a href="https://jsmastery.pro/next14" target="_blank">
-<img src="https://github.com/sujatagunale/EasyRead/assets/151519281/557837ce-f612-4530-ab24-189e75133c71" alt="Project Banner">
-</a>
 
 #
