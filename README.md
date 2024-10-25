@@ -33,19 +33,19 @@
 
 ## 🚨 Course
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>. 
+This repository contains the code corresponding to an in-depth course available on our  <a href="https://jsmastery.pro/" target="_blank"><b>JavaScript Mastery Pro Website</b></a>. 
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
+If you prefer visual learning, this is the perfect resource for you. Follow our course to learn how to build projects like these step-by-step in a beginner-friendly manner
 
 <a href="https://www.youtube.com/watch?v=FkowOdMjvYo" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
 
 ## <a name="introduction">🤖 Introduction</a>
 
-Built with React.js for handling the user interface, Three.js for rendering 3D elements, and styled with TailwindCSS, 3D Island is a website project. The primary goal is to demonstrate the developer's skills in a unique manner that creates a lasting impact.
+In this in-depth course, you’ll master Next.js by building and deploying a full-stack project, Devoverflow—a community-driven platform inspired by StackOverflow, enhanced with AI-powered answers, gamification, recommendations, and more. Using the latest features of Next.js, you’ll explore rendering strategies like SSG, ISR, SSR, PPR, Server Functions, Caching, & Revalidation to create a production-ready application. 
 
-If you're getting started and need assistance or face any bugs, join our active Discord community with over **34k+** members. It's a place where people help each other out.
+The project uses MongoDB for a robust database layer, NextAuth (Auth.js) for versatile authentication options (Email/Password, GitHub, Google), and sleek styling with TailwindCSS and ShadCN UI. Devoverflow enables developers to ask questions, post answers, leverage AI for responses, vote, organize content, contribute, discover jobs, and explore recommended topics—all while engaging with gamified elements like badges and rewards.
 
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+If you're getting started and need assistance or encounter any bugs, you can join our active PRO Discord community, which has over 5k+ members. It's a place where people help each other out.
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
