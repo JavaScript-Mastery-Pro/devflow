@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
+  <br />
+    <a href="https://www.jsmastery.pro/ultimate-next-course" target="_blank">
+      <img src="https://github.com/user-attachments/assets/769882e6-bae6-4932-a117-829cf34f809f" alt="Project Banner">
+    </a>
+  <br />
 
-## Getting Started
+  <div>
+    <img src="https://img.shields.io/badge/-TypeScript-black?style=for-the-badge&logoColor=white&logo=typescript&color=3178C6" alt="typescript" />
+    <img src="https://img.shields.io/badge/-Next_JS-black?style=for-the-badge&logoColor=white&logo=nextdotjs&color=000000" alt="nextdotjs" />
+    <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
+    <img src="https://img.shields.io/badge/-MongoDB-black?style=for-the-badge&logoColor=white&logo=mongodb&color=47A248" alt="mongodb" />
+    <img src="https://img.shields.io/badge/-ShadCN_UI-black?style=for-the-badge&logoColor=white&logo=shadcnui&color=000000" alt="shadcnui" />
+    <img src="https://img.shields.io/badge/-Open_AI-black?style=for-the-badge&logoColor=white&logo=openai&color=412991" alt="openai" />
+  </div>
 
-First, run the development server:
+  <h3 align="center">The Ultimate Next.js Course</h3>
+
+   <div align="center">
+     Build this project step by step with our detailed course on <a href="https://www.jsmastery.pro" target="_blank"><b>JavaScript Mastery PRO</b></a> Website. Join the JSM PRO family!
+    </div>
+</div>
+
+
+## 📋 <a name="table">Table of Contents</a>
+
+1. 🤖 [Introduction](#introduction)
+2. ⚙️ [Tech Stack](#tech-stack)
+3. 🔋 [Features](#features)
+4. 🤸 [Quick Start](#quick-start)
+5. 🔗 [Assets](#links)
+6. 🚀 [More](#more)
+
+## 🚨 Course
+
+This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a>. 
+
+If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
+
+<a href="https://www.youtube.com/watch?v=FkowOdMjvYo" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/1736fca5-a031-4854-8c09-bc110e3bc16d" /></a>
+
+## <a name="introduction">🤖 Introduction</a>
+
+Built with React.js for handling the user interface, Three.js for rendering 3D elements, and styled with TailwindCSS, 3D Island is a website project. The primary goal is to demonstrate the developer's skills in a unique manner that creates a lasting impact.
+
+If you're getting started and need assistance or face any bugs, join our active Discord community with over **34k+** members. It's a place where people help each other out.
+
+<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+
+## <a name="tech-stack">⚙️ Tech Stack</a>
+
+- Zod
+- Next.js
+- NextAuth
+- Open AI
+- MongoDB
+- ShadCN UI
+- TypeScript
+- TailwindCSS
+- React Hook Form
+
+## <a name="features">🔋 Features</a>
+
+👉 **Point**: Short Description
+
+👉 **Point**: Short Description
+
+👉 **Point**: Short Description
+
+👉 **Point**: Short Description
+
+👉 **Point**: Short Description
+
+👉 **Point**: Short Description
+
+👉 **Point**: Short Description
+
+and many more, including code architecture and reusability 
+
+## <a name="quick-start">🤸 Quick Start</a>
+
+Follow these steps to set up the project locally on your machine.
+
+**Prerequisites**
+
+Make sure you have the following installed on your machine:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+
+**Cloning the Repository**
+
+```bash
+git clone https://github.com/JavaScript-Mastery-Pro/devflow-v2-record.git
+cd devflow-v2-record
+```
+
+**Installation**
+
+Install the project dependencies using npm:
+
+```bash
+npm install
+```
+
+**Set Up Environment Variables**
+
+Create a new file named `.env` in the root of your project and add the following content:
+
+```env
+# Mongodb
+MONGODB_URI=
+
+# OpenAI
+OPENAI_API_KEY=
+
+# Rapid API
+NEXT_PUBLIC_RAPID_API_KEY=
+
+# Auth
+AUTH_GOOGLE_ID=
+AUTH_GOOGLE_SECRET=
+AUTH_GITHUB_ID=
+AUTH_GITHUB_SECRET=
+AUTH_SECRET=
+NEXTAUTH_URL=
+
+# Tiny Editor
+NEXT_PUBLIC_TINY_EDITOR_API_KEY=
+
+NEXT_PUBLIC_SERVER_URL=
+
+NODE_ENV=
+```
+
+Replace the placeholder values with your actual credentials. You can obtain these credentials by signing up on the respective websites
+
+**Running the Project**
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## <a name="links">🔗 Assets</a>
 
-## Learn More
+Models and Assets used in the project can be found [here](https://drive.google.com/file/d/1TACDN8qFpi_NW66I4p48R9_MUmx-JT3P/edit)
 
-To learn more about Next.js, take a look at the following resources:
+## <a name="more">🚀 More</a>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**JavaScript Mastery YouTube**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with detailed explanations, cool features, and exercises to boost your skills. Give it a go!
 
-## Deploy on Vercel
+<a href="https://jsmastery.pro/next14" target="_blank">
+<img src="https://github.com/sujatagunale/EasyRead/assets/151519281/557837ce-f612-4530-ab24-189e75133c71" alt="Project Banner">
+</a>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#
