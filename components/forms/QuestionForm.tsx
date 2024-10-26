@@ -1,6 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import dynamic from "next/dynamic";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -18,6 +19,10 @@ import {
   FormMessage,
 } from "../ui/form";
 import { Input } from "../ui/input";
+
+const Editor = dynamic(() => import("@/components/editor"), {
+  ssr: false,
+});
 
 const QuestionForm = () => {
   const form = useForm<z.infer<typeof AskQuestionSchema>>({
@@ -72,7 +77,7 @@ const QuestionForm = () => {
                 <span className="text-primary-500">*</span>
               </FormLabel>
               <FormControl className="mt-3.5">
-                <p>Editor</p>
+                <Editor />
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500">
                 Introduce the problem and expand on what you put in the title.
