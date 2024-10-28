@@ -1,8 +1,8 @@
-import { Schema, models, model, Document } from "mongoose";
+import { Schema, models, model, Types } from "mongoose";
 
 export interface IVote extends Document {
-  author: Schema.Types.ObjectId;
-  id: Schema.Types.ObjectId;
+  author: Types.ObjectId;
+  id: Types.ObjectId;
   type: string;
   voteType: string;
 }

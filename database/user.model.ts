@@ -1,6 +1,6 @@
-import { Schema, models, model, Document } from "mongoose";
+import { Schema, models, model } from "mongoose";
 
-export interface IUser extends Document {
+export interface IUser {
   name: string;
   username: string;
   email: string;
@@ -10,7 +10,6 @@ export interface IUser extends Document {
   location?: string;
   portfolio?: string;
   reputation?: number;
-  joinedAt: Date;
 }
 
 const UserSchema = new Schema<IUser>(
@@ -24,7 +23,6 @@ const UserSchema = new Schema<IUser>(
     location: { type: String },
     portfolio: { type: String },
     reputation: { type: Number, default: 0 },
-    joinedAt: { type: Date, default: Date.now },
   },
   { timestamps: true }
 );

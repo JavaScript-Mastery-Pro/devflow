@@ -1,6 +1,6 @@
-import { Schema, model, models, Document, Types } from "mongoose";
+import { Schema, model, models, Types } from "mongoose";
 
-export interface IAccount extends Document {
+export interface IAccount {
   userId: Types.ObjectId;
   name: string;
   image?: string;

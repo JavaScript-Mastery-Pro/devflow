@@ -1,8 +1,8 @@
-import { Schema, models, model, Document } from "mongoose";
+import { Schema, models, model, Types } from "mongoose";
 
-export interface IAnswer extends Document {
-  author: Schema.Types.ObjectId;
-  question: Schema.Types.ObjectId;
+export interface IAnswer {
+  author: Types.ObjectId;
+  question: Types.ObjectId;
   content: string;
   upvotes: number;
   downvotes: number;
