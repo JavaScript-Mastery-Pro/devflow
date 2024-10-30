@@ -32,10 +32,10 @@ async function dbConnect(): Promise<Mongoose> {
     cached.promise = mongoose
       .connect(MONGODB_URI, {
         dbName: "devflow",
-        bufferCommands: false,
       })
-      .then((mongoose) => {
-        return mongoose;
+      .then((result) => {
+        console.log("Connected to MongoDB");
+        return result;
       });
   }
 
