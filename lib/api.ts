@@ -10,6 +10,11 @@ export const api = {
   users: {
     getAll: () => fetchHandler<IUser[]>(`${API_BASE_URL}/users`),
     getById: (id: string) => fetchHandler<IUser>(`${API_BASE_URL}/users/${id}`),
+    getByEmail: (email: string) =>
+      fetchHandler<IUser>(`${API_BASE_URL}/users/email`, {
+        method: "POST",
+        body: JSON.stringify({ email }),
+      }),
     create: (userData: Partial<IUser>) =>
       fetchHandler<IUser>(`${API_BASE_URL}/users`, {
         method: "POST",
@@ -27,6 +32,11 @@ export const api = {
     getAll: () => fetchHandler<IAccount[]>(`${API_BASE_URL}/accounts`),
     getById: (id: string) =>
       fetchHandler<IAccount>(`${API_BASE_URL}/accounts/${id}`),
+    getByProvider: (providerAccountId: string) =>
+      fetchHandler<IAccount>(`${API_BASE_URL}/accounts/provider`, {
+        method: "POST",
+        body: JSON.stringify({ providerAccountId }),
+      }),
     create: (accountData: Partial<IAccount>) =>
       fetchHandler<IAccount>(`${API_BASE_URL}/accounts`, {
         method: "POST",
