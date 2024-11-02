@@ -10,7 +10,15 @@ export async function GET() {
     await dbConnect();
 
     const users = await User.find({}).select("-password");
-    return NextResponse.json(users);
+    return NextResponse.json(
+      {
+        success: true,
+        data: users,
+      },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
     return handleError(error, "api");
   }
@@ -33,7 +41,13 @@ export async function POST(request: NextRequest) {
 
     const newUser = User.create(validatedData);
 
-    return NextResponse.json(newUser, { status: 201 });
+    return NextResponse.json(
+      {
+        success: true,
+        data: newUser,
+      },
+      { status: 201 }
+    );
   } catch (error) {
     return handleError(error, "api");
   }

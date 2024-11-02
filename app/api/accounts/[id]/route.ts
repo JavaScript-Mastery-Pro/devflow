@@ -19,7 +19,13 @@ export async function GET(
     const account = await Account.findById(id);
     if (!account) throw new NotFoundError("Account");
 
-    return NextResponse.json(account);
+    return NextResponse.json(
+      {
+        success: true,
+        data: account,
+      },
+      { status: 200 }
+    );
   } catch (error) {
     return handleError(error, "api");
   }
@@ -45,7 +51,13 @@ export async function PUT(
     });
     if (!updatedAccount) throw new NotFoundError("Account");
 
-    return NextResponse.json(updatedAccount);
+    return NextResponse.json(
+      {
+        success: true,
+        data: updatedAccount,
+      },
+      { status: 200 }
+    );
   } catch (error) {
     return handleError(error, "api");
   }
@@ -64,7 +76,10 @@ export async function DELETE(
     const deletedAccount = await Account.findByIdAndDelete(id);
     if (!deletedAccount) throw new NotFoundError("Account");
 
-    return new NextResponse(null, { status: 204 });
+    return NextResponse.json(
+      { success: true, data: deletedAccount },
+      { status: 204 }
+    );
   } catch (error) {
     return handleError(error, "api");
   }

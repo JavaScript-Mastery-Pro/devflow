@@ -19,7 +19,15 @@ export async function GET(
     const user = await User.findById(id);
     if (!user) throw new NotFoundError("User");
 
-    return NextResponse.json(user);
+    return NextResponse.json(
+      {
+        success: true,
+        data: user,
+      },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
     return handleError(error, "api");
   }
@@ -43,7 +51,15 @@ export async function PUT(
     });
     if (!updatedUser) throw new NotFoundError("User");
 
-    return NextResponse.json(updatedUser);
+    return NextResponse.json(
+      {
+        success: true,
+        data: updatedUser,
+      },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
     return handleError(error, "api");
   }
@@ -59,7 +75,13 @@ export async function DELETE(
     const deletedUser = await User.findByIdAndDelete(params.id);
     if (!deletedUser) throw new NotFoundError("User");
 
-    return new NextResponse(null, { status: 204 });
+    return NextResponse.json(
+      {
+        success: true,
+        data: deletedUser,
+      },
+      { status: 204 }
+    );
   } catch (error) {
     return handleError(error, "api");
   }
