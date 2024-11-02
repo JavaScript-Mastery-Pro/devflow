@@ -1,3 +1,20 @@
+type SuccessResponse = { success: boolean; data?: unknown };
+
+type ErrorResponse = {
+  success: boolean;
+  status: number;
+  error: { message: string; errors?: Record<string, string[]> };
+};
+
+type ActionSuccessResponse = SuccessResponse;
+type ActionErrorResponse = ErrorResponse;
+
+type APIErrorResponse = NextResponse<ErrorResponse>;
+type APISuccessResponse = NextResponse<SuccessResponse>;
+
+type ActionResponse = ActionSuccessResponse | ActionErrorResponse;
+type APIResponse = APISuccessResponse | APIErrorResponse;
+
 interface UrlQueryParams {
   params: string;
   key: string;

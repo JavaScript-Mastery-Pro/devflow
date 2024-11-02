@@ -18,10 +18,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (validatedFields.success) {
           const { email, password } = validatedFields.data;
 
-          const existingAccount = await api.accounts.getByProvider(email);
+          const { data: existingAccount } = (await api.accounts.getByProvider(
+            email
+          )) as APIResponse;
           if (!existingAccount) return null;
 
-          const existingUser = await api.users.getById(existingAccount.userId);
+          const { data: existingUser } = (await api.users.getById(
+            existingAccount.userId
+          )) as APIResponse;
+
           if (!existingUser) return null;
 
           const passwordsMatch = await bcrypt.compare(
@@ -50,11 +55,14 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async jwt({ token, account }) {
       if (account) {
-        const existingAccount = await api.accounts.getByProvider(
-          account?.providerAccountId
-        );
-        const userId = existingAccount.userId;
+        const { data: existingAccount, success } =
+          (await api.accounts.getByProvider(
+            account?.providerAccountId
+          )) as APIResponse;
 
+        if (!success) return token;
+
+        const userId = existingAccount.userId;
         if (userId) token.sub = userId;
       }
 
