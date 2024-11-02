@@ -1,4 +1,4 @@
-export class ApiError extends Error {
+export class RequestError extends Error {
   statusCode: number;
   errors?: Record<string, string[]>;
 
@@ -9,34 +9,51 @@ export class ApiError extends Error {
   ) {
     super(message);
     this.statusCode = statusCode;
-    this.name = "ApiError";
+    this.name = "RequestError";
     this.errors = errors;
   }
 }
 
-export class ValidationError extends ApiError {
+export class ValidationError extends RequestError {
   constructor(fieldErrors: Record<string, string[]>) {
-    super(400, "Validation Error", fieldErrors);
+    const formattedMessage = ValidationError.formatFieldErrors(fieldErrors);
+    super(400, formattedMessage, fieldErrors);
     this.name = "ValidationError";
     this.errors = fieldErrors;
   }
+
+  static formatFieldErrors(errors: Record<string, string[]>): string {
+    const formattedMessages = Object.entries(errors).map(
+      ([field, messages]) => {
+        const fieldName = field.charAt(0).toUpperCase() + field.slice(1);
+
+        if (messages[0] === "Required") {
+          return `${fieldName} is required`;
+        } else {
+          return messages.join(" and ");
+        }
+      }
+    );
+
+    return formattedMessages.join(", ");
+  }
 }
 
-export class NotFoundError extends ApiError {
+export class NotFoundError extends RequestError {
   constructor(resource: string) {
     super(404, `${resource} not found`);
     this.name = "NotFoundError";
   }
 }
 
-export class UnauthorizedError extends ApiError {
+export class UnauthorizedError extends RequestError {
   constructor(message: string = "Unauthorized") {
     super(401, message);
     this.name = "UnauthorizedError";
   }
 }
 
-export class ForbiddenError extends ApiError {
+export class ForbiddenError extends RequestError {
   constructor(message: string = "Forbidden") {
     super(403, message);
     this.name = "ForbiddenError";

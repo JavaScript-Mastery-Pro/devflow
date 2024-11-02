@@ -3,7 +3,7 @@ import { ZodError } from "zod";
 
 import logger from "@/lib/logger";
 
-import { ApiError, ValidationError } from "../http-errors";
+import { RequestError, ValidationError } from "../http-errors";
 
 export type ResponseType = "api" | "server";
 
@@ -27,8 +27,11 @@ const formatResponse = (
 };
 
 function handleError(error: unknown, responseType: ResponseType = "server") {
-  if (error instanceof ApiError) {
-    logger.error({ err: error }, `API Error: ${error.message}`);
+  if (error instanceof RequestError) {
+    logger.error(
+      { err: error },
+      `${responseType.toUpperCase()} Error: ${error.message}`
+    );
     return formatResponse(
       responseType,
       error.statusCode,
@@ -42,7 +45,7 @@ function handleError(error: unknown, responseType: ResponseType = "server") {
       (error.flatten().fieldErrors as Record<string, string[]>) || {}
     );
 
-    logger.error({ err: validationError }, "Validation Error");
+    logger.error({ err: error }, "Validation Error");
     return formatResponse(
       responseType,
       400,

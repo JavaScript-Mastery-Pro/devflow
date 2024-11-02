@@ -1,12 +1,11 @@
 "use server";
 
-import { error } from "console";
-
 import { Session } from "next-auth";
-import { ZodSchema } from "zod";
+import { ZodError, ZodSchema } from "zod";
 
 import { auth } from "@/auth";
 
+import { UnauthorizedError, ValidationError } from "../http-errors";
 import dbConnect from "../mongoose";
 
 type MiddlewareOptions<T> = {
@@ -21,7 +20,17 @@ async function action<T>({
   authorize = false,
 }: MiddlewareOptions<T>) {
   if (schema && params) {
-    schema.parse(params);
+    try {
+      schema.parse(params);
+    } catch (error) {
+      if (error instanceof ZodError) {
+        return new ValidationError(
+          error.flatten().fieldErrors as Record<string, string[]>
+        );
+      } else {
+        return new Error("Schema validation failed");
+      }
+    }
   }
 
   let session: Session | null = null;
@@ -29,7 +38,7 @@ async function action<T>({
     session = await auth();
 
     if (!session) {
-      throw error;
+      return new UnauthorizedError();
     }
   }
 

@@ -1,4 +1,4 @@
-import { ApiError } from "../http-errors";
+import { RequestError } from "../http-errors";
 import logger from "../logger";
 import handleError, { ResponseType } from "./error";
 
@@ -49,7 +49,7 @@ export async function fetchHandler<T>(
       clearTimeout(id); // Clear the timeout on successful fetch
 
       if (!response.ok) {
-        throw new ApiError(
+        throw new RequestError(
           response.status,
           `HTTP error! status: ${response.status}`
         );
@@ -62,8 +62,8 @@ export async function fetchHandler<T>(
       // Use the handleError function to manage the error
       const handledResponse = handleError(lastError, responseType);
 
-      // If it's a retry attempt and we encountered an ApiError
-      if (lastError instanceof ApiError) {
+      // If it's a retry attempt and we encountered an RequestError
+      if (lastError instanceof RequestError) {
         // Don't retry for client errors (4xx)
         if (lastError.statusCode >= 400 && lastError.statusCode < 500) {
           return handledResponse; // Return the handled response
