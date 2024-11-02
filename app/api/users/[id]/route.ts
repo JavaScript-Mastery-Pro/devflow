@@ -29,7 +29,7 @@ export async function GET(
       }
     );
   } catch (error) {
-    return handleError(error, "api");
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
 
@@ -61,18 +61,21 @@ export async function PUT(
       }
     );
   } catch (error) {
-    return handleError(error, "api");
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
+  if (!id) throw new NotFoundError("User");
+
   try {
     await dbConnect();
 
-    const deletedUser = await User.findByIdAndDelete(params.id);
+    const deletedUser = await User.findByIdAndDelete(id);
     if (!deletedUser) throw new NotFoundError("User");
 
     return NextResponse.json(
@@ -83,6 +86,6 @@ export async function DELETE(
       { status: 204 }
     );
   } catch (error) {
-    return handleError(error, "api");
+    return handleError(error, "api") as APIErrorResponse;
   }
 }

@@ -11,9 +11,17 @@ export async function GET() {
     await dbConnect();
 
     const accounts = await Account.find({}).select("-password");
-    return NextResponse.json(accounts);
+    return NextResponse.json(
+      {
+        success: true,
+        data: accounts,
+      },
+      {
+        status: 200,
+      }
+    );
   } catch (error) {
-    return handleError(error, "api");
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
 
@@ -39,6 +47,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(newAccount, { status: 201 });
   } catch (error) {
-    return handleError(error, "api");
+    return handleError(error, "api") as APIErrorResponse;
   }
 }

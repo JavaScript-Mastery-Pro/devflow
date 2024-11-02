@@ -9,7 +9,7 @@ export async function GET() {
   try {
     await dbConnect();
 
-    const users = await User.find({}).select("-password");
+    const users = await User.find({});
     return NextResponse.json(
       {
         success: true,
@@ -20,7 +20,7 @@ export async function GET() {
       }
     );
   } catch (error) {
-    return handleError(error, "api");
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
 
@@ -49,6 +49,6 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error) {
-    return handleError(error, "api");
+    return handleError(error, "api") as APIErrorResponse;
   }
 }

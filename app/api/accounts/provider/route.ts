@@ -28,6 +28,6 @@ export async function POST(request: Request) {
       }
     );
   } catch (error) {
-    return handleError(error, "api");
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
