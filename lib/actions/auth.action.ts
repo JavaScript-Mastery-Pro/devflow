@@ -13,7 +13,7 @@ import { NotFoundError } from "../http-errors";
 import { SignInSchema, SignUpSchema } from "../validations";
 
 export async function signUpWithCredentials(
-  params: signUpWithCredentialsParams
+  params: SignUpWithCredentialsParams
 ): Promise<ActionResponse> {
   const validationResult = await action({
     params,
@@ -73,7 +73,7 @@ export async function signUpWithCredentials(
 }
 
 export async function signInWithCredentials(
-  params: signInWithCredentialsParams
+  params: SignInWithCredentialsParams
 ): Promise<ActionResponse> {
   const validationResult = await action({
     params,
