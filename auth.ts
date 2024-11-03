@@ -57,7 +57,9 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (account) {
         const { data: existingAccount, success } =
           (await api.accounts.getByProvider(
-            account?.providerAccountId
+            account.type === "credentials"
+              ? token.email!
+              : account.providerAccountId
           )) as APIResponse;
 
         if (!success) return token;
