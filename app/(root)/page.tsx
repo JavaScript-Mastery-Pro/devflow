@@ -5,6 +5,8 @@ import HomeFilter from "@/components/filters/HomeFilter";
 import LocalSearch from "@/components/search/LocalSearch";
 import { Button } from "@/components/ui/button";
 import ROUTES from "@/constants/routes";
+import handleError from "@/lib/handlers/error";
+import { ValidationError } from "@/lib/http-errors";
 
 const questions = [
   {
@@ -84,7 +86,23 @@ const questions = [
   },
 ];
 
+const test = async () => {
+  try {
+    // throw new Error("test");
+    // throw new NotFoundError("test");
+    throw new ValidationError({
+      title: ["Required"],
+      tags: ['"Javascript" is not a valid tag.'],
+    });
+  } catch (error) {
+    return handleError(error);
+  }
+};
+
 async function Home() {
+  const result = await test();
+  console.log(result);
+
   return (
     <>
       <section className="flex w-full flex-col-reverse justify-between gap-4 sm:flex-row sm:items-center">
