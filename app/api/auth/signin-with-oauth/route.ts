@@ -79,7 +79,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   } catch (err: unknown) {
     await session.abortTransaction();
-    return handleError(err, "api");
+    return handleError(err, "api") as APIErrorResponse;
   } finally {
     session.endSession();
   }
