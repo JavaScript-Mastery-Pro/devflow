@@ -1,6 +1,6 @@
 import { RequestError } from "../http-errors";
 import logger from "../logger";
-import handleError, { ResponseType } from "./error";
+import handleError from "./error";
 
 interface FetchOptions extends RequestInit {
   timeout?: number;
@@ -13,9 +13,8 @@ function isError(error: unknown): error is Error {
 
 export async function fetchHandler<T>(
   url: string,
-  options: FetchOptions = {},
-  responseType: ResponseType = "api"
-): Promise<T | ReturnType<typeof handleError>> {
+  options: FetchOptions = {}
+): Promise<ActionResponse<T>> {
   const {
     timeout = 5000,
     headers: customHeaders = {},
@@ -49,7 +48,7 @@ export async function fetchHandler<T>(
       );
     }
 
-    return (await response.json()) as T;
+    return await response.json();
   } catch (error) {
     const lastError = isError(error) ? error : new Error("Unknown error");
 
@@ -61,6 +60,6 @@ export async function fetchHandler<T>(
     }
 
     // Use the handleError function to manage the error
-    return handleError(lastError, responseType);
+    return handleError(lastError) as ActionResponse<T>;
   }
 }

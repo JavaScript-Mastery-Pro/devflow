@@ -17,7 +17,7 @@ const formatResponse = (
     success: false,
     error: {
       message,
-      errors,
+      details: errors,
     },
   };
 
@@ -32,6 +32,7 @@ function handleError(error: unknown, responseType: ResponseType = "server") {
       { err: error },
       `${responseType.toUpperCase()} Error: ${error.message}`
     );
+
     return formatResponse(
       responseType,
       error.statusCode,

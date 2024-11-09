@@ -19,20 +19,20 @@ export const api = {
       }),
   },
   users: {
-    getAll: () => fetchHandler<IUser[]>(`${API_BASE_URL}/users`),
-    getById: (id: string) => fetchHandler<IUser>(`${API_BASE_URL}/users/${id}`),
+    getAll: () => fetchHandler(`${API_BASE_URL}/users`),
+    getById: (id: string) => fetchHandler(`${API_BASE_URL}/users/${id}`),
     getByEmail: (email: string) =>
-      fetchHandler<IUser>(`${API_BASE_URL}/users/email`, {
+      fetchHandler(`${API_BASE_URL}/users/email`, {
         method: "POST",
         body: JSON.stringify({ email }),
       }),
     create: (userData: Partial<IUser>) =>
-      fetchHandler<IUser>(`${API_BASE_URL}/users`, {
+      fetchHandler(`${API_BASE_URL}/users`, {
         method: "POST",
         body: JSON.stringify(userData),
       }),
     update: (id: string, userData: Partial<IUser>) =>
-      fetchHandler<IUser>(`${API_BASE_URL}/users/${id}`, {
+      fetchHandler(`${API_BASE_URL}/users/${id}`, {
         method: "PUT",
         body: JSON.stringify(userData),
       }),
@@ -40,21 +40,20 @@ export const api = {
       fetchHandler(`${API_BASE_URL}/users/${id}`, { method: "DELETE" }),
   },
   accounts: {
-    getAll: () => fetchHandler<IAccount[]>(`${API_BASE_URL}/accounts`),
-    getById: (id: string) =>
-      fetchHandler<IAccount>(`${API_BASE_URL}/accounts/${id}`),
+    getAll: () => fetchHandler(`${API_BASE_URL}/accounts`),
+    getById: (id: string) => fetchHandler(`${API_BASE_URL}/accounts/${id}`),
     getByProvider: (providerAccountId: string) =>
-      fetchHandler<IAccount>(`${API_BASE_URL}/accounts/provider`, {
+      fetchHandler(`${API_BASE_URL}/accounts/provider`, {
         method: "POST",
         body: JSON.stringify({ providerAccountId }),
       }),
     create: (accountData: Partial<IAccount>) =>
-      fetchHandler<IAccount>(`${API_BASE_URL}/accounts`, {
+      fetchHandler(`${API_BASE_URL}/accounts`, {
         method: "POST",
         body: JSON.stringify(accountData),
       }),
     update: (id: string, accountData: Partial<IAccount>) =>
-      fetchHandler<IAccount>(`${API_BASE_URL}/accounts/${id}`, {
+      fetchHandler(`${API_BASE_URL}/accounts/${id}`, {
         method: "PUT",
         body: JSON.stringify(accountData),
       }),

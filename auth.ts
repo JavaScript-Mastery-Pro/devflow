@@ -4,6 +4,8 @@ import NextAuth from "next-auth";
 import GitHub from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
 
+import { IAccount } from "./database/account.model";
+import { IUserDoc } from "./database/user.model";
 import { api } from "./lib/api";
 import { SignInSchema } from "./lib/validations";
 
@@ -20,18 +22,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 
           const { data: existingAccount } = (await api.accounts.getByProvider(
             email
-          )) as APIResponse;
+          )) as ActionResponse<IAccount>;
           if (!existingAccount) return null;
 
           const { data: existingUser } = (await api.users.getById(
-            existingAccount.userId
-          )) as APIResponse;
-
+            existingAccount.userId.toString()
+          )) as ActionResponse<IUserDoc>;
           if (!existingUser) return null;
 
           const passwordsMatch = await bcrypt.compare(
             password,
-            existingAccount.password
+            existingAccount.password!
           );
 
           if (passwordsMatch)
@@ -60,12 +61,12 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             account.type === "credentials"
               ? token.email!
               : account.providerAccountId
-          )) as APIResponse;
+          )) as ActionResponse<IAccount>;
 
-        if (!success) return token;
+        if (!success || !existingAccount) return token;
 
         const userId = existingAccount.userId;
-        if (userId) token.sub = userId;
+        if (userId) token.sub = userId.toString();
       }
 
       return token;
@@ -88,7 +89,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         user: userInfo,
         provider: account.provider as "github" | "google",
         providerAccountId: account.providerAccountId,
-      })) as APIResponse;
+      })) as ActionResponse;
       if (!success) return false;
 
       return true;

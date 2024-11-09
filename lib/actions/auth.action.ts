@@ -21,7 +21,7 @@ export async function signUpWithCredentials(
   });
 
   if (validationResult instanceof Error) {
-    return handleError(validationResult) as ActionErrorResponse;
+    return handleError(validationResult) as ErrorResponse;
   }
 
   const { name, username, email, password } = validationResult.params!;
@@ -55,18 +55,18 @@ export async function signUpWithCredentials(
       { session }
     );
 
+    await session.commitTransaction();
+
     await signIn("credentials", {
       email,
       password,
       redirect: false,
     });
 
-    await session.commitTransaction();
-
     return { success: true };
   } catch (error) {
     await session.abortTransaction();
-    return handleError(error) as ActionErrorResponse;
+    return handleError(error) as ErrorResponse;
   } finally {
     await session.endSession();
   }
@@ -81,7 +81,7 @@ export async function signInWithCredentials(
   });
 
   if (validationResult instanceof Error) {
-    return handleError(validationResult) as ActionErrorResponse;
+    return handleError(validationResult) as ErrorResponse;
   }
 
   const { email, password } = validationResult.params!;
@@ -110,6 +110,6 @@ export async function signInWithCredentials(
 
     return { success: true };
   } catch (error) {
-    return handleError(error) as ActionErrorResponse;
+    return handleError(error) as ErrorResponse;
   }
 }

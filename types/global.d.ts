@@ -1,19 +1,17 @@
-type SuccessResponse = { success: boolean; data?: unknown };
-
-type ErrorResponse = {
+type ActionResponse<T = null> = {
   success: boolean;
-  status: number;
-  error: { message: string; errors?: Record<string, string[]> };
+  data?: T;
+  error?: {
+    message: string;
+    details?: Record<string, string[]>;
+  };
+  status?: number;
 };
 
-type ActionSuccessResponse = SuccessResponse;
-type ActionErrorResponse = ErrorResponse;
+type SuccessResponse<T = null> = ActionResponse<T | null>;
+type ErrorResponse = ActionResponse<undefined> & { success: false };
 
-type APIErrorResponse = NextResponse<ErrorResponse>;
-type APISuccessResponse = NextResponse<SuccessResponse>;
-
-type ActionResponse = ActionSuccessResponse | ActionErrorResponse;
-type APIResponse = APISuccessResponse | APIErrorResponse;
+type APIResponse<T = null> = NextResponse<ActionResponse<T>>;
 
 interface UrlQueryParams {
   params: string;

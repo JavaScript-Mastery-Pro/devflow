@@ -21,7 +21,7 @@ export async function GET() {
       }
     );
   } catch (error) {
-    return handleError(error, "api") as APIErrorResponse;
+    return handleError(error, "api");
   }
 }
 
@@ -47,6 +47,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(newAccount, { status: 201 });
   } catch (error) {
-    return handleError(error, "api") as APIErrorResponse;
+    return handleError(error, "api");
   }
 }

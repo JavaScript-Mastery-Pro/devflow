@@ -29,7 +29,7 @@ export async function GET(
       }
     );
   } catch (error) {
-    return handleError(error, "api") as APIErrorResponse;
+    return handleError(error, "api");
   }
 }
 
@@ -61,7 +61,7 @@ export async function PUT(
       }
     );
   } catch (error) {
-    return handleError(error, "api") as APIErrorResponse;
+    return handleError(error, "api");
   }
 }
 
@@ -86,6 +86,6 @@ export async function DELETE(
       { status: 204 }
     );
   } catch (error) {
-    return handleError(error, "api") as APIErrorResponse;
+    return handleError(error, "api");
   }
 }
