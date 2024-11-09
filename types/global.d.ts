@@ -11,6 +11,7 @@ type ActionResponse<T = null> = {
 type SuccessResponse<T = null> = ActionResponse<T | null>;
 type ErrorResponse = ActionResponse<undefined> & { success: false };
 
+type APIErrorResponse = NextResponse<ActionResponse>;
 type APIResponse<T = null> = NextResponse<ActionResponse<T>>;
 
 interface UrlQueryParams {

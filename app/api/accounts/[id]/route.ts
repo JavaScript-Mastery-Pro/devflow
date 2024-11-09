@@ -27,7 +27,7 @@ export async function GET(
       { status: 200 }
     );
   } catch (error) {
-    return handleError(error, "api");
+    return handleError(error, "api") as APIErrorResponse;
   }
 }
 
