@@ -9,7 +9,7 @@ interface SignInWithOAuthParams {
   };
 }
 
-interface SignUpWithCredentialsParams {
+interface AuthCredentials {
   name: string;
   username: string;
   email: string;
