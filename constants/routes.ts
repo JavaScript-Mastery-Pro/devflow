@@ -9,7 +9,7 @@ const ROUTES = {
   COLLECTION: "/collection",
   COMMUNITY: "/community",
   PROFILE: (id: string) => `/profile/${id}`,
-  QUESTION: (id: string) => `/question/${id}`,
+  QUESTION: (id: string) => `/questions/${id}`,
 };
 
 export default ROUTES;

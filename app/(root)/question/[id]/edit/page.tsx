@@ -3,6 +3,7 @@ import React from "react";
 
 import { auth } from "@/auth";
 import QuestionForm from "@/components/forms/QuestionForm";
+import ROUTES from "@/constants/routes";
 import { getQuestion } from "@/lib/actions/question.action";
 
 const Page = async ({ params }: RouteParams) => {
@@ -10,13 +11,13 @@ const Page = async ({ params }: RouteParams) => {
   if (!id) notFound();
 
   const session = await auth();
-  if (!session) redirect("/sign-in");
+  if (!session) redirect(ROUTES.SIGN_IN);
 
   const { data: question, success } = await getQuestion({ questionId: id });
   if (!success) notFound();
 
   if (question?.author.toString() !== session?.user?.id)
-    redirect(`/question/${id}`);
+    redirect(ROUTES.QUESTION(id));
 
   return (
     <main>

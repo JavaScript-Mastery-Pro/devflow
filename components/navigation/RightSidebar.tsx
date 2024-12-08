@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import ROUTES from "@/constants/routes";
+
 import TagCard from "../cards/TagCard";
 
 const hotQuestions = [
@@ -62,7 +64,7 @@ const RightSidebar = async () => {
         <div className="mt-7 flex w-full flex-col gap-[30px]">
           {hotQuestions.map((question) => (
             <Link
-              href={`/question/${question._id}`}
+              href={ROUTES.QUESTION(question._id)}
               key={question._id}
               className="flex cursor-pointer items-center justify-between gap-7"
             >

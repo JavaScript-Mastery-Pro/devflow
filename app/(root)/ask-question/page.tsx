@@ -3,10 +3,11 @@ import React from "react";
 
 import { auth } from "@/auth";
 import QuestionForm from "@/components/forms/QuestionForm";
+import ROUTES from "@/constants/routes";
 
 const AskQuestionPage = async () => {
   const session = await auth();
-  if (!session) redirect("/sign-in");
+  if (!session) redirect(ROUTES.SIGN_IN);
 
   return (
     <>

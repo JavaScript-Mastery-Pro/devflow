@@ -35,7 +35,7 @@ async function Home({ searchParams }: RouteParams) {
 
       <section className="mt-11">
         <LocalSearch
-          route="/"
+          route={ROUTES.HOME}
           imgSrc="/icons/search.svg"
           placeholder="Search questions..."
           iconPosition="left"

@@ -11,6 +11,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import ROUTES from "@/constants/routes";
 
 import NavLinks from "./NavLinks";
 
@@ -36,7 +37,7 @@ const MobileNavigation = async () => {
       >
         <SheetTitle className="hidden">Navigation</SheetTitle>
 
-        <Link href="/" className="flex items-center gap-1">
+        <Link href={ROUTES.HOME} className="flex items-center gap-1">
           <Image
             src="/images/site-logo.svg"
             width={23}
@@ -77,7 +78,7 @@ const MobileNavigation = async () => {
             ) : (
               <>
                 <SheetClose asChild>
-                  <Link href="/sign-in">
+                  <Link href={ROUTES.SIGN_IN}>
                     <Button className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
                       <span className="primary-text-gradient">Log In</span>
                     </Button>
@@ -85,7 +86,7 @@ const MobileNavigation = async () => {
                 </SheetClose>
 
                 <SheetClose asChild>
-                  <Link href="/sign-up">
+                  <Link href={ROUTES.SIGN_UP}>
                     <Button className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none">
                       Sign up
                     </Button>

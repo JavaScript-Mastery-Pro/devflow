@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { auth, signOut } from "@/auth";
+import ROUTES from "@/constants/routes";
 
 import { Button } from "../ui/button";
 import NavLinks from "./navbar/NavLinks";
@@ -41,7 +42,7 @@ const LeftSidebar = async () => {
               className="small-medium btn-secondary min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none"
               asChild
             >
-              <Link href="/sign-in">
+              <Link href={ROUTES.SIGN_IN}>
                 <Image
                   src="/icons/account.svg"
                   alt="login"
@@ -59,7 +60,7 @@ const LeftSidebar = async () => {
               className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg border px-4 py-3 shadow-none"
               asChild
             >
-              <Link href="/sign-up">
+              <Link href={ROUTES.SIGN_UP}>
                 <Image
                   src="/icons/sign-up.svg"
                   alt="login"
