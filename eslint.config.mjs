@@ -21,8 +21,8 @@ const config = [
     "next/typescript",
     "standard",
     "plugin:tailwindcss/recommended",
-    "prettier",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "prettier"
   ),
   {
     rules: {
@@ -56,6 +56,7 @@ const config = [
           },
         },
       ],
+      "comma-dangle": "es5",
     },
   },
   {

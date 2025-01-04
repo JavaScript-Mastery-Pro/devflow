@@ -7,6 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function getDeviconClassName(techName: string) {
   const normalizedTech = techName.replace(/[ .]/g, "").toLowerCase();
+  console.log(normalizedTech, techName);
 
   // Dictionary mapping possible technology names to Devicon class names
   const techMap: { [key: string]: string } = {
@@ -83,9 +84,13 @@ export function getDeviconClassName(techName: string) {
     // AWS variations
     aws: "devicon-amazonwebservices-original",
     "amazon web services": "devicon-amazonwebservices-original",
+
+    // Tailwind CSS variations
+    tailwind: "devicon-tailwindcss-original",
+    tailwindcss: "devicon-tailwindcss-original",
   };
 
-  return `${techMap[normalizedTech]} colored` || "devicon-devicon-plain";
+  return `${techMap[normalizedTech] || "devicon-devicon-plain"} colored`;
 }
 
 export function getTechDescription(techName: string): string {
