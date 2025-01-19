@@ -9,6 +9,8 @@ import ROUTES from "@/constants/routes";
 import { getQuestion } from "@/lib/actions/question.action";
 import { formatNumber, getTimeStamp } from "@/lib/utils";
 
+import Views from "../view";
+
 const Page = async ({ params }: RouteParams) => {
   const { id } = await params;
   const { success, data: question } = await getQuestion({ questionId: id });
@@ -41,6 +43,8 @@ const Page = async ({ params }: RouteParams) => {
           {question.title}
         </h2>
       </div>
+
+      <Views questionId={id} />
 
       <div className="mb-8 mt-5 flex flex-wrap gap-4">
         <Metric
