@@ -10,7 +10,6 @@ import {
   GetTagQuestionsSchema,
   PaginatedSearchParamsSchema,
 } from "../validations";
-import { IQuestion } from "@/database/question.model";
 
 export async function getTags(params: PaginatedSearchParams): Promise<
   ActionResponse<{
