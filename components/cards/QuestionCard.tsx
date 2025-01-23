@@ -5,6 +5,7 @@ import { formatNumber, getTimeStamp } from "@/lib/utils";
 
 import TagCard from "./TagCard";
 import { Metric } from "../Metric";
+import UserAvatar from "../UserAvatar";
 
 interface Props {
   question: Question;
@@ -40,15 +41,21 @@ const QuestionCard = ({
       </div>
 
       <div className="flex-between mt-6 w-full flex-wrap gap-3">
-        <Metric
-          imgUrl={author.image}
-          alt={author.name}
-          value={author.name}
-          title={` • asked ${getTimeStamp(createdAt)}`}
-          href={ROUTES.PROFILE(author._id)}
-          textStyles="body-medium text-dark400_light700"
-          titleStyles="max-sm:hidden"
-        />
+        <div className="flex flex-row items-center gap-1">
+          <UserAvatar
+            id={author._id}
+            name={author.name}
+            imageUrl={author.image}
+            className="size-4"
+            fallbackClassName="text-[8px]"
+          />
+
+          <Metric
+            value="• asked"
+            title={getTimeStamp(createdAt)}
+            textStyles="body-medium text-dark400_light700"
+          />
+        </div>
 
         <div className="flex items-center gap-3 max-sm:flex-wrap max-sm:justify-start">
           <Metric
