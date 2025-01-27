@@ -5,10 +5,12 @@ import { MDXEditorMethods } from "@mdxeditor/editor";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useRef, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
+import { toast } from "@/hooks/use-toast";
+import { createAnswer } from "@/lib/actions/answer.action";
 import { AnswerSchema } from "@/lib/validations";
 
 import { Button } from "../ui/button";
@@ -24,8 +26,13 @@ const Editor = dynamic(() => import("@/components/editor"), {
   ssr: false,
 });
 
-const AnswerForm = () => {
-  const [submitting, setSubmitting] = useState(false);
+interface Props {
+  questionId: string;
+}
+
+const AnswerForm = ({ questionId }: Props) => {
+  const [isAnswering, startAnsweringTransition] = useTransition();
+
   const [aiSubmitting, setAiSubmitting] = useState(false);
 
   const editorRef = useRef<MDXEditorMethods>(null);
@@ -38,7 +45,25 @@ const AnswerForm = () => {
   });
 
   const handleCreateAnswer = async (values: z.infer<typeof AnswerSchema>) => {
-    console.log(values);
+    startAnsweringTransition(async () => {
+      const result = await createAnswer({
+        content: values.content,
+        questionId,
+      });
+
+      if (result.success) {
+        toast({
+          title: "Success",
+          description: "Your answer has been created successfully.",
+        });
+      } else {
+        toast({
+          title: `Error (${result.status})`,
+          description: result.error?.message,
+          variant: "destructive",
+        });
+      }
+    });
   };
 
   return (
@@ -98,9 +123,9 @@ const AnswerForm = () => {
             <Button
               type="submit"
               className="primary-gradient w-fit"
-              disabled={submitting}
+              disabled={isAnswering}
             >
-              {submitting ? (
+              {isAnswering ? (
                 <>
                   <ReloadIcon className="mr-2 size-4 animate-spin" />
                   Posting...
