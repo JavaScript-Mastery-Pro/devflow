@@ -81,7 +81,7 @@ export async function getAnswers(params: GetAnswersParams): Promise<
     return handleError(validationResult) as ErrorResponse;
   }
 
-  const { page = 1, pageSize = 10, filter } = params;
+  const { questionId, page = 1, pageSize = 10, filter } = params;
 
   const skip = (Number(page) - 1) * pageSize;
   const limit = pageSize;
@@ -104,9 +104,9 @@ export async function getAnswers(params: GetAnswersParams): Promise<
   }
 
   try {
-    const totalAnswers = await Answer.countDocuments();
+    const totalAnswers = await Answer.countDocuments({ question: questionId });
 
-    const answers = await Answer.find()
+    const answers = await Answer.find({ question: questionId })
       .populate("author", "_id name image")
       .sort(sortCriteria)
       .skip(skip)
