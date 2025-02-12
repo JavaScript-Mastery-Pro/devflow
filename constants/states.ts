@@ -33,10 +33,6 @@ export const EMPTY_ANSWERS = {
   title: "No Answers Found",
   message:
     "The answer board is empty. Make it rain with your brilliant answer.",
-  button: {
-    text: "Answer a Question",
-    href: ROUTES.HOME,
-  },
 };
 
 export const EMPTY_TAGS = {
