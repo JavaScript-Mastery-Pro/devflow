@@ -85,10 +85,14 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
 
     setAiSubmitting(true);
 
+    // store answer written by user for more context to feed to ai
+    const userAnswer = editorRef.current?.getMarkdown();
+
     try {
       const { success, data, error } = await api.ai.getAnswer(
         questionTitle,
-        questionContent
+        questionContent,
+        userAnswer
       );
 
       if (!success) {

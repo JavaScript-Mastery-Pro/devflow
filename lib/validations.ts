@@ -162,4 +162,5 @@ export const AIAnswerSchema = z.object({
   content: z.string().min(100, {
     message: "Question description must have Minimum of 100 characters.",
   }),
+  userAnswer: z.string().optional(),
 });
