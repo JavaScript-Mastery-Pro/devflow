@@ -28,13 +28,12 @@ function UserAvatar({
 
   return (
     <Link href={`/profile/${id}`}>
-      <Avatar className={className}>
+      <Avatar className={cn("relative", className)}>
         {imageUrl ? (
           <Image
             src={imageUrl}
             alt={`${name}'s avatar`}
-            width={36}
-            height={36}
+            fill
             className="object-cover"
             quality={100}
           />

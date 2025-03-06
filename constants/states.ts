@@ -49,3 +49,9 @@ export const EMPTY_COLLECTIONS = {
   message:
     "Looks like you haven’t created any collections yet. Start curating something extraordinary today",
 };
+
+export const EMPTY_USERS = {
+  title: "No Users Found",
+  message:
+    "It's ALONE in the world. You're the only one here. Join us and let the world know who you are.",
+};
