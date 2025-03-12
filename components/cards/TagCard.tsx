@@ -64,7 +64,7 @@ const TagCard = ({
       <Link
         href={`/tags/${_id}`}
         key={_id}
-        className="flex justify-between gap-2"
+        className="flex items-center justify-between gap-2"
       >
         {Content}
       </Link>
