@@ -55,6 +55,7 @@ interface Answer {
   author: Author;
   content: string;
   upvotes: number;
+  question: string;
   downvotes: number;
   createdAt: Date;
 }
