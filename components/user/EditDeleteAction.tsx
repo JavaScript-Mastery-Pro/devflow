@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 import { toast } from "@/hooks/use-toast";
+import { deleteQuestion } from "@/lib/actions/question.action";
 
 import {
   AlertDialog,
@@ -32,6 +33,7 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
   const handleDelete = async () => {
     if (type === "Question") {
       // TODO: implement delete question (deleteQuestion)
+      await deleteQuestion({ questionId: itemId });
 
       toast({
         title: "Question Deleted",
