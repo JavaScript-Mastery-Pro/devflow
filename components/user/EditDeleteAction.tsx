@@ -84,7 +84,7 @@ const EditDeleteAction = ({ type, itemId }: Props) => {
             <AlertDialogCancel className="btn">Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDelete}
-              className="!border-primary-100 !bg-primary-500 !text-light-700"
+              className="border-primary-100! bg-primary-500! text-light-700!"
             >
               Continue
             </AlertDialogAction>
