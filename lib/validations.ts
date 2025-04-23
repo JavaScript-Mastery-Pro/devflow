@@ -265,3 +265,8 @@ export const UpdateUserSchema = z.object({
     message: "Bio must be at least 3 characters.",
   }),
 });
+
+export const GlobalSearchSchema = z.object({
+  query: z.string(),
+  type: z.string().nullable().optional(),
+});
