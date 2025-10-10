@@ -1,70 +1,50 @@
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
 
 import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
+
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
 });
 
-const config = [
-  {
-    ignores: ["components/ui/**/*"],
-  },
+const eslintConfig = [
   ...compat.extends(
     "next/core-web-vitals",
     "next/typescript",
-    "standard",
-    // "plugin:tailwindcss/recommended",
-    "prettier"
+    "plugin:prettier/recommended"
   ),
   {
     rules: {
-      "import/order": [
+      "prettier/prettier": [
         "error",
         {
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            ["parent", "sibling"],
-            "index",
-            "object",
-          ],
-
-          "newlines-between": "always",
-
-          pathGroups: [
-            {
-              pattern: "@app/**",
-              group: "external",
-              position: "after",
-            },
-          ],
-
-          pathGroupsExcludedImportTypes: ["builtin"],
-
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
+          trailingComma: "es5",
+          semi: true,
+          tabWidth: 2,
+          printWidth: 80,
+          endOfLine: "auto",
+          arrowParens: "always",
+          plugins: ["prettier-plugin-tailwindcss"],
+        },
+        {
+          usePrettierrc: false,
         },
       ],
-      "comma-dangle": "off",
     },
   },
   {
-    files: ["**/*.ts", "**/*.tsx"],
-
-    rules: {
-      "no-undef": "off",
-    },
+    ignores: [
+      "node_modules/**",
+      ".next/**",
+      "out/**",
+      "build/**",
+      "next-env.d.ts",
+      "components/ui/**",
+    ],
   },
 ];
 
-export default config;
+export default eslintConfig;
