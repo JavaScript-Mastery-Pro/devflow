@@ -27,7 +27,7 @@ const Page = async ({ searchParams }: RouteParams) => {
         <JobsFilter countriesList={countries} />
       </div>
 
-      <section className="light-border mb-9 mt-11 flex flex-col gap-9 border-b pb-9">
+      <section className="light-border mt-11 mb-9 flex flex-col gap-9 border-b pb-9">
         {jobs?.length > 0 ? (
           jobs
             ?.filter((job: Job) => job.job_title)

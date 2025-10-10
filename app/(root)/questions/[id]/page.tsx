@@ -114,7 +114,7 @@ const Page = async ({ params, searchParams }: RouteParams) => {
         </h2>
       </div>
 
-      <div className="mb-8 mt-5 flex flex-wrap gap-4">
+      <div className="mt-5 mb-8 flex flex-wrap gap-4">
         <Metric
           imgUrl="/icons/clock.svg"
           alt="clock icon"

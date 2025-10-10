@@ -35,7 +35,7 @@ const NavLinks = ({ isMobileNav = false, userId }: Props) => {
             key={item.label}
             className={cn(
               isActive
-                ? "primary-gradient rounded-lg text-light-900"
+                ? "primary-gradient text-light-900 rounded-lg"
                 : "text-dark300_light900",
               "flex items-center justify-start gap-4 bg-transparent p-4"
             )}

@@ -159,7 +159,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
                   {...field}
                 />
               </FormControl>
-              <FormDescription className="body-regular mt-2.5 text-light-500">
+              <FormDescription className="body-regular text-light-500 mt-2.5">
                 Be specific and imagine you’re asking a question to another
                 person.
               </FormDescription>
@@ -184,7 +184,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
                   fieldChange={field.onChange}
                 />
               </FormControl>
-              <FormDescription className="body-regular mt-2.5 text-light-500">
+              <FormDescription className="body-regular text-light-500 mt-2.5">
                 Introduce the problem and expand on what you put in the title.
                 Minimum 20 characters.
               </FormDescription>
@@ -226,7 +226,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
                   )}
                 </div>
               </FormControl>
-              <FormDescription className="body-regular mt-2.5 text-light-500">
+              <FormDescription className="body-regular text-light-500 mt-2.5">
                 Add up to 3 tags to describe what your question is about. You
                 need to press enter to add a tag.
               </FormDescription>
@@ -239,7 +239,7 @@ const QuestionForm = ({ question, isEdit = false }: Params) => {
           <Button
             type="submit"
             disabled={isPending}
-            className="primary-gradient w-fit text-light-900!"
+            className="primary-gradient text-light-900! w-fit"
           >
             {isPending ? (
               <>

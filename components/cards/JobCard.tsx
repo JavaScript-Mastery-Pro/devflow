@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import Image from "next/image";
 import Link from "next/link";
 
@@ -96,7 +95,7 @@ const JobCard = ({ job }: { job: Job }) => {
           </div>
         </div>
 
-        <p className="body-regular text-dark500_light700  mt-2 line-clamp-2">
+        <p className="body-regular text-dark500_light700 mt-2 line-clamp-2">
           {job_description?.slice(0, 200)}
         </p>
 

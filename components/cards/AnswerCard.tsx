@@ -34,12 +34,12 @@ const AnswerCard = async ({
 
   return (
     <article
-      className={cn("light-border border-b py-10 relative", containerClasses)}
+      className={cn("light-border relative border-b py-10", containerClasses)}
     >
       <span id={`answer-${_id}`} className="hash-span"></span>
 
       {showActionBtns && (
-        <div className="background-light800_dark300 flex-center absolute -right-2 -top-5 size-9 rounded-full">
+        <div className="background-light800_dark300 flex-center absolute -top-5 -right-2 size-9 rounded-full">
           <EditDeleteAction type="Answer" itemId={_id} />
         </div>
       )}
@@ -61,7 +61,7 @@ const AnswerCard = async ({
               {author.name ?? "Anonymous"}
             </p>
 
-            <p className="small-regular text-light400_light500 ml-0.5 mt-0.5 line-clamp-1">
+            <p className="small-regular text-light400_light500 mt-0.5 ml-0.5 line-clamp-1">
               <span className="max-sm:hidden"> • </span> answered{" "}
               {getTimeStamp(createdAt)}
             </p>
@@ -86,7 +86,7 @@ const AnswerCard = async ({
       {showReadMore && (
         <Link
           href={`/questions/${question}#answer-${_id}`}
-          className="body-semibold relative z-10 font-space-grotesk text-primary-500"
+          className="body-semibold font-space-grotesk text-primary-500 relative z-10"
         >
           <p className="mt-1">Read more ...</p>
         </Link>

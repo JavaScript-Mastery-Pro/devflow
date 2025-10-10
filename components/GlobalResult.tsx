@@ -62,9 +62,9 @@ const GlobalResult = () => {
   };
 
   return (
-    <div className="absolute top-full z-10 mt-3 w-full rounded-xl bg-light-800 py-5 shadow-sm dark:bg-dark-400">
+    <div className="bg-light-800 dark:bg-dark-400 absolute top-full z-10 mt-3 w-full rounded-xl py-5 shadow-sm">
       <GlobalFilter />
-      <div className="my-5 h-[1px] bg-light-700/50 dark:bg-dark-500/50" />
+      <div className="bg-light-700/50 dark:bg-dark-500/50 my-5 h-[1px]" />
 
       <div className="space-y-5">
         <p className="text-dark400_light900 paragraph-semibold px-5">
@@ -73,7 +73,7 @@ const GlobalResult = () => {
 
         {isLoading ? (
           <div className="flex-center flex-col px-5">
-            <ReloadIcon className="my-2 h-10 w-10 animate-spin text-primary-500" />
+            <ReloadIcon className="text-primary-500 my-2 h-10 w-10 animate-spin" />
             <p className="text-dark200_light800 body-regular">
               Browsing the whole database..
             </p>
@@ -85,7 +85,7 @@ const GlobalResult = () => {
                 <Link
                   href={renderLink(item.type, item.id)}
                   key={item.type + item.id + index}
-                  className="flex w-full cursor-pointer items-start gap-3 px-5 py-2.5 hover:bg-light-700/50 dark:hover:bg-dark-500/50"
+                  className="hover:bg-light-700/50 dark:hover:bg-dark-500/50 flex w-full cursor-pointer items-start gap-3 px-5 py-2.5"
                 >
                   <Image
                     src="/icons/tag.svg"
