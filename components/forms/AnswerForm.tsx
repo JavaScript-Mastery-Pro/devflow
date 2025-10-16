@@ -16,13 +16,7 @@ import { api } from "@/lib/api";
 import { AnswerSchema } from "@/lib/validations";
 
 import { Button } from "../ui/button";
-import {
-  Form,
-  FormField,
-  FormItem,
-  FormControl,
-  FormMessage,
-} from "../ui/form";
+import { Form, FormField, FormItem, FormControl, FormMessage } from "../ui/form";
 
 const Editor = dynamic(() => import("@/components/editor"), {
   ssr: false,
@@ -89,18 +83,12 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
     const userAnswer = editorRef.current?.getMarkdown();
 
     try {
-      const { success, data, error } = await api.ai.getAnswer(
-        questionTitle,
-        questionContent,
-        userAnswer
-      );
+      const { success, data, error } = await api.ai.getAnswer(questionTitle, questionContent, userAnswer);
 
       if (!success) {
         return toast({
           title: "Error",
-          description: `Failed to generate AI answer. Please try again. ${JSON.stringify(
-            error
-          )}`,
+          description: `Failed to generate AI answer. Please try again. ${JSON.stringify(error)}`,
           variant: "destructive",
         });
       }
@@ -122,10 +110,7 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
     } catch (error: Error | unknown) {
       toast({
         title: "Error",
-        description:
-          error instanceof Error
-            ? error.message
-            : "There was a problem with your request.",
+        description: error instanceof Error ? error.message : "There was a problem with your request.",
         variant: "destructive",
       });
     } finally {
@@ -136,9 +121,7 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
   return (
     <div>
       <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-center sm:gap-2">
-        <h4 className="paragraph-semibold text-dark400_light800">
-          Write your answer here
-        </h4>
+        <h4 className="paragraph-semibold text-dark400_light800">Write your answer here</h4>
 
         <Button
           className="btn light-border-2 text-primary-500 dark:text-primary-500 gap-1.5 rounded-md border px-4 py-2.5 shadow-none"
@@ -166,21 +149,14 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
       </div>
 
       <Form {...form}>
-        <form
-          className="mt-6 flex w-full flex-col gap-10"
-          onSubmit={form.handleSubmit(handleCreateAnswer)}
-        >
+        <form className="mt-6 flex w-full flex-col gap-10" onSubmit={form.handleSubmit(handleCreateAnswer)}>
           <FormField
             control={form.control}
             name="content"
             render={({ field }) => (
               <FormItem className="flex w-full flex-col gap-3">
                 <FormControl className="mt-3.5">
-                  <Editor
-                    value={field.value}
-                    editorRef={editorRef}
-                    fieldChange={field.onChange}
-                  />
+                  <Editor value={field.value} editorRef={editorRef} fieldChange={field.onChange} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -188,11 +164,7 @@ const AnswerForm = ({ questionId, questionTitle, questionContent }: Props) => {
           />
 
           <div className="flex justify-end">
-            <Button
-              type="submit"
-              className="primary-gradient w-fit"
-              disabled={isAnswering}
-            >
+            <Button type="submit" className="primary-gradient w-fit" disabled={isAnswering}>
               {isAnswering ? (
                 <>
                   <ReloadIcon className="mr-2 size-4 animate-spin" />

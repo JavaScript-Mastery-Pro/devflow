@@ -13,8 +13,7 @@ export async function POST(req: Request) {
 
   try {
     const validatedData = AIAnswerSchema.safeParse({ question, content });
-    if (!validatedData.success)
-      throw new ValidationError(validatedData.error.flatten().fieldErrors);
+    if (!validatedData.success) throw new ValidationError(validatedData.error.flatten().fieldErrors);
 
     const { text } = await generateText({
       model: openai("gpt-4-turbo"),
