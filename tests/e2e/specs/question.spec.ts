@@ -1,32 +1,42 @@
-import { test, expect } from "@playwright/test";
+import { expect } from "@playwright/test";
 
-import { SAMPLE_QUESTIONS } from "@/tests/fixtures/questions";
+import { test } from "../fixtures/question.fixture";
+// import { SAMPLE_QUESTIONS } from "@/tests/fixtures/questions";
 
-const question = SAMPLE_QUESTIONS[0];
+// const question = SAMPLE_QUESTIONS[0];
 
-test.describe("Ask a Question Flow", () => {
-  test("should allow a user to submit a new question and view it on the question page", async ({ page }) => {
-    await page.goto("/ask-question");
-    await expect(page).toHaveURL("/ask-question");
+test.describe("Question Flow", () => {
+  test("should allow user to update question", async ({ page, createQuestion, question }) => {
+    const { questionId } = createQuestion;
 
-    await page.getByRole("textbox", { name: "Question Title *" }).dblclick();
-    await page.getByRole("textbox", { name: "Question Title *" }).fill(question.title);
+    await page.goto(`/questions/${questionId}/edit`);
+    await expect(page).toHaveURL(/\/questions\/[a-f0-9]+\/edit$/);
 
-    await page.getByRole("textbox", { name: "editable markdown" }).click();
-    await page.getByRole("textbox", { name: "editable markdown" }).fill(question.content);
+    // Fill out the question form
+    await page.getByRole("textbox", { name: "Question Title *" }).fill(`${question.title} - E2E Test`);
+    await page.getByRole("textbox", { name: "editable markdown" }).fill(`${question.content} - E2E Test`);
 
-    await page.getByRole("textbox", { name: "Add tags..." }).click();
-    await page.getByRole("textbox", { name: "Add tags..." }).fill(question.tags[0]);
+    // remove first tag and add a new one
+    await page.getByRole("button", { name: question.tags[0] }).getByRole("img", { name: "close icon" }).click();
+
+    await page.getByRole("textbox", { name: "Add tags..." }).fill("test");
     await page.getByRole("textbox", { name: "Add tags..." }).press("Enter");
 
-    await page.getByRole("textbox", { name: "Add tags..." }).click();
-    await page.getByRole("textbox", { name: "Add tags..." }).fill(question.tags[1]);
-    await page.getByRole("textbox", { name: "Add tags..." }).press("Enter");
+    await page.getByRole("button", { name: "Save edits" }).click();
 
-    await page.getByRole("button", { name: "Ask a question" }).click();
+    // after submission, check udpated question details
+    await expect(page).toHaveURL(`/questions/${questionId}`);
+    // await expect(page).toHaveURL(/\/questions\/[a-f0-9]+$/);
 
-    // after submission, check the redirected correct question page:
-    await expect(page).toHaveURL(/\/questions\/[a-f0-9]+$/);
-    await expect(page.getByRole("heading", { name: question.title, exact: true })).toBeVisible();
+    await expect(
+      page.getByRole("heading", {
+        name: `${question.title} - E2E Test`,
+        exact: true,
+      })
+    ).toBeVisible();
+    await expect(page.getByText(`${question.content} - E2E Test`, { exact: false })).toBeVisible();
+
+    await expect(page.getByRole("link", { name: question.tags[0], exact: true })).not.toBeVisible();
+    await expect(page.getByRole("link", { name: "test", exact: true })).toBeVisible();
   });
 });

@@ -17,6 +17,8 @@ export default defineConfig({
   globalTeardown: "./tests/e2e/setup/global-teardown.ts",
   /* Run tests in files in parallel */
   fullyParallel: true,
+  timeout: 60 * 1000, // Maximum time a test can run
+  expect: { timeout: 30 * 1000 }, // Maximum time for an assertion
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
@@ -48,6 +50,7 @@ export default defineConfig({
   webServer: {
     command: "npm run start:test",
     url: process.env.BASE_URL,
+    timeout: 120 * 1000,
     reuseExistingServer: !process.env.CI,
   },
 });
