@@ -1,4 +1,6 @@
-const mockSession = {
+import type { Session } from "next-auth";
+
+const mockSession: Session = {
   user: {
     id: "mock-user-123",
     name: "Test User",
@@ -8,7 +10,7 @@ const mockSession = {
   expires: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
 };
 
-const mockAuth = jest.fn();
+const mockAuth = jest.fn<Promise<Session | null>, []>();
 const mockSignIn = jest.fn();
 const mockSignOut = jest.fn();
 
