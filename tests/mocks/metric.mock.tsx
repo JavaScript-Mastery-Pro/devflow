@@ -10,7 +10,7 @@ interface MetricProps {
 
 const MockMetric = ({ imgUrl, alt, value, title, textStyles }: MetricProps) => {
   return (
-    <div className={textStyles}>
+    <div data-testid="metric" className={textStyles}>
       <MockedImage alt={alt} src={imgUrl} />
       {value} {title}
     </div>

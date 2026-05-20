@@ -67,4 +67,26 @@ describe("QuestionCard Component", () => {
       });
     });
   });
+
+  it("should show timestamp on large screens", () => {
+    // Simulate a large screen
+    Object.defineProperty(window, "innerWidth", {
+      writable: true,
+      configurable: true,
+      value: 800,
+    });
+    window.dispatchEvent(new Event("resize"));
+
+    render(<QuestionCard question={mockQuestion} />);
+
+    // Check timestamp visibility
+    const timestampFlex = screen.getByText(relativeTimeText, {
+      selector: "span",
+    });
+    expect(timestampFlex).toBeVisible();
+
+    // Check metrics visibility
+    const metric = screen.getAllByTestId("metric")[0];
+    expect(metric).toBeVisible();
+  });
 });
